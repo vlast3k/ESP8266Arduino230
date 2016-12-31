@@ -532,3 +532,28 @@ String ESP8266WebServer::_responseCodeToString(int code) {
     default:  return "";
   }
 }
+
+String StaticRequestHandler::getContentType(const String& path) {
+    if (path.endsWith(F(".html"))) return F("text/html");
+    else if (path.endsWith(F(".htm"))) return F("text/html");
+    else if (path.endsWith(F(".css"))) return F("text/css");
+    else if (path.endsWith(F(".txt"))) return F("text/plain");
+    else if (path.endsWith(F(".js")))  return F("application/javascript");
+    else if (path.endsWith(F(".png"))) return F("image/png");
+    else if (path.endsWith(F(".gif"))) return F("image/gif");
+    else if (path.endsWith(F(".jpg"))) return F("image/jpeg");
+    else if (path.endsWith(F(".ico"))) return F("image/x-icon");
+    else if (path.endsWith(F(".svg"))) return F("image/svg+xml");
+    else if (path.endsWith(F(".ttf"))) return F("application/x-font-ttf");
+    else if (path.endsWith(F(".otf"))) return F("application/x-font-opentype");
+    else if (path.endsWith(F(".woff"))) return F("application/font-woff");
+    else if (path.endsWith(F(".woff2"))) return F("application/font-woff2");
+    else if (path.endsWith(F(".eot")))  return F("application/vnd.ms-fontobject");
+    else if (path.endsWith(F(".sfnt"))) return F("application/font-sfnt");
+    else if (path.endsWith(F(".xml"))) return F("text/xml");
+    else if (path.endsWith(F(".pdf"))) return F("application/pdf");
+    else if (path.endsWith(F(".zip"))) return F("application/zip");
+    else if(path.endsWith(F(".gz"))) return F("application/x-gzip");
+    else if (path.endsWith(F(".appcache"))) return F("text/cache-manifest");
+    return F("application/octet-stream");
+}
