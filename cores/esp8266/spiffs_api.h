@@ -1,6 +1,5 @@
 #ifndef spiffs_api_h
 #define spiffs_api_h
-
 /*
  spiffs_api.h - file system wrapper for SPIFFS
  Copyright (c) 2015 Ivan Grokhotkov. All rights reserved.
@@ -138,6 +137,9 @@ public:
             return;
         }
         SPIFFS_unmount(&_fs);
+        _workBuf.reset();
+        _fdsBuf.reset();
+        _cacheBuf.reset();
     }
 
     bool format() override
