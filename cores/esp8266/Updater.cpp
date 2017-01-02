@@ -344,31 +344,31 @@ size_t UpdaterClass::writeStream(Stream &data) {
 }
 
 void UpdaterClass::printError(Stream &out){
-  out.printf("ERROR[%u]: ", _error);
+  out.printf(String(F("ERROR[%u]: ")).c_str(), _error);
   if(_error == UPDATE_ERROR_OK){
-    out.println("No Error");
+    out.println(F("No Error"));
   } else if(_error == UPDATE_ERROR_WRITE){
-    out.println("Flash Write Failed");
+    out.println(F("Flash Write Failed"));
   } else if(_error == UPDATE_ERROR_ERASE){
-    out.println("Flash Erase Failed");
+    out.println(F("Flash Erase Failed"));
   } else if(_error == UPDATE_ERROR_READ){
-    out.println("Flash Read Failed");
+    out.println(F("Flash Read Failed"));
   } else if(_error == UPDATE_ERROR_SPACE){
-    out.println("Not Enough Space");
+    out.println(F("Not Enough Space"));
   } else if(_error == UPDATE_ERROR_SIZE){
-    out.println("Bad Size Given");
+    out.println(F("Bad Size Given"));
   } else if(_error == UPDATE_ERROR_STREAM){
-    out.println("Stream Read Timeout");
+    out.println(F("Stream Read Timeout"));
   } else if(_error == UPDATE_ERROR_MD5){
-    out.println("MD5 Check Failed");
+    out.println(F("MD5 Check Failed"));
   } else if(_error == UPDATE_ERROR_FLASH_CONFIG){
-    out.printf("Flash config wrong real: %d IDE: %d\n", ESP.getFlashChipRealSize(), ESP.getFlashChipSize());
+    out.printf(String(F("Flash config wrong real: %d IDE: %d\n")).c_str(), ESP.getFlashChipRealSize(), ESP.getFlashChipSize());
   } else if(_error == UPDATE_ERROR_NEW_FLASH_CONFIG){
-    out.printf("new Flash config wrong real: %d\n", ESP.getFlashChipRealSize());
+    out.printf(String(F("new Flash config wrong real: %d\n")).c_str(), ESP.getFlashChipRealSize());
   } else if(_error == UPDATE_ERROR_MAGIC_BYTE){
-    out.println("Magic byte is wrong, not 0xE9");
+    out.println(F("Magic byte is wrong, not 0xE9"));
   } else {
-    out.println("UNKNOWN");
+    out.println(F("UNKNOWN"));
   }
 }
 

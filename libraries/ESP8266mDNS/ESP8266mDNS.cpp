@@ -594,7 +594,7 @@ void MDNSResponder::_parsePacket(){
         // Read hostname
         tmp8 = _conn_read8();
         if (tmp8 & 0xC0) { // Compressed pointer (not supported)
-          Serial.println("Skipping compressed pointer");
+          Serial.println(F("Skipping compressed pointer"));
           tmp8 = _conn_read8();
         }
         else {
